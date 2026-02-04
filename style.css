@@ -1,0 +1,206 @@
+:root {
+  /* Colors */
+  --color-primary: #27ae60;
+  --dark-color: #2c3e50;
+  --light-bg: #f4f7f6;
+  --white: #fff;
+  --color-accent: #3434db;
+  --color-danger: #e74c3c;
+  --color-warning: #f39c12;
+  --color-success: #adff2f;
+
+  /* Typography */
+  --font-heading: "Work Sans", sans-serif;
+  --font-body: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  /* Fluid Typography */
+  --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --font-size-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --font-size-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --font-size-md: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --font-size-lg: clamp(1.75rem, 1.5rem + 1.25vw, 2.5rem);
+  --font-size-xl: clamp(2rem, 1.75rem + 1.25vw, 3rem);
+
+  /* Spacing */
+  --spacing-xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
+  --spacing-sm: clamp(0.5rem, 0.45rem + 0.25vw, 0.75rem);
+  --spacing-md: clamp(1rem, 0.9rem + 0.5vw, 1.5rem);
+  --spacing-lg: clamp(1.5rem, 1.3rem + 1vw, 2.5rem);
+  --spacing-xl: clamp(2rem, 1.7rem + 1.5vw, 3.5rem);
+
+  /* Layout */
+  --container-width: min(1200px, 95%);
+  --border-radius: 8px;
+  --transition-speed: 0.3s;
+}
+
+/* Modern CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+}
+
+body {
+  background-color: var(--light-bg);
+  color: var(--dark-color);
+}
+
+/* Header & Navigasi */
+header {
+  background: var(--white);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 1rem 5%;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* agar fleksibel di layar kecil */
+}
+
+.logo {
+  font-size: var(--font-size-md);
+  font-weight: bold;
+  color: var(--dark-color);
+}
+
+.logo span {
+  color: var(--color-primary);
+}
+
+nav ul {
+  display: none;
+  list-style: none;
+  flex-direction: column;
+  width: 60%;
+}
+
+nav ul li {
+  margin: 10px 0;
+  text-align: center;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: var(--color-warning);
+  font-weight: 500;
+}
+
+/* Hamburger Menu */
+
+/* Hero Section */
+main {
+  height: 100%;
+}
+
+#hero {
+  text-align: center;
+  padding: 30px;
+  background: linear-gradient(rgba(39, 174, 96, 0.1), rgba(255, 255, 255, 1));
+}
+
+section p {
+  margin: 40px 80px;
+}
+
+.search-container {
+  margin-top: -30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input[type="text"] {
+  padding: 5px;
+  width: 90%;
+  max-width: 300px;
+  border: 1px solid var(--dark-color);
+  border-radius: 5px;
+  outline: none;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 5px 10px;
+  background: var(--color-primary);
+  color: var(--white);
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: var(--transition-speed);
+}
+
+button:hover {
+  background: var(--color-success);
+  color: var(--dark-color);
+}
+
+/* Food Container (Grid) */
+#food-container {
+  height: 350px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 20px 5%;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: var(--dark-color);
+  color: var(--white);
+  margin-top: 30px;
+}
+
+/* Media Queries */
+
+/* Tablet */
+@media (min-width: 600px) {
+  .logo {
+    font-size: var(--font-size-lg);
+  }
+
+  nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  nav ul li {
+    margin: 0 10px;
+  }
+
+  header .menu-toggle {
+    display: none;
+  }
+
+  #food-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding: 40px 5%;
+  }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+  nav ul li {
+    margin-left: 20px;
+  }
+
+  #hero {
+    padding: 60px 20px;
+  }
+
+  #food-container {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
