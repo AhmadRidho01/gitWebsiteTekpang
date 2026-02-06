@@ -57,9 +57,6 @@ header {
   position: sticky;
   top: 0;
   z-index: 9999;
-}
-
-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -76,25 +73,79 @@ nav {
   color: var(--color-primary);
 }
 
-nav ul {
-  /* display: none; */
-  list-style: none;
+/* 1. Chechbox Control (disembunyikan) */
+.menu-input {
+  display: none;
+}
+
+/* 2. Hamburger Menu */
+.navbar-extra {
+  margin-left: auto;
+  display: flex;
   flex-direction: column;
-  width: 31%;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 100;
 }
 
-nav ul li {
-  margin: 10px 0;
-  text-align: center;
+.navbar-extra span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: var(--dark-color);
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
 }
 
-nav ul li a {
+/* Pengaturan titik putar agar presisi */
+.navbar-extra span:nth-child(1),
+.navbar-extra span:nth-child(2),
+.navbar-extra span:nth-child(3) {
+  transform-origin: left center;
+}
+
+/* Animasi X */
+.menu-input:checked + .navbar-extra span:nth-child(1) {
+  transform: translateY(0px) rotate(38deg);
+}
+.menu-input:checked + .navbar-extra span:nth-child(2) {
+  opacity: 0;
+}
+.menu-input:checked + .navbar-extra span:nth-child(3) {
+  transform: translateY(0px) rotate(-38deg);
+}
+
+/* Munculkan Menu */
+.menu-input:checked ~ .navbar-nav {
+  right: 0;
+}
+
+/* 3. Menu Navigasi (Mobile-First) */
+.navbar-nav {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 250px;
+  height: 100vh;
+  background: var(--light-bg);
+  transition: right 0.3s ease;
+  padding-top: 80px;
+  z-index: 99;
+}
+
+.navbar-nav ul {
+  list-style: none;
+}
+.navbar-nav ul li {
+  margin: 20px;
+}
+.navbar-nav ul li a {
+  color: var(--dark-color);
   text-decoration: none;
-  color: var(--color-primary);
-  font-weight: 400;
+  font-size: 18px;
 }
-
-/* Hamburger Menu */
 
 /* Hero Section */
 main {
@@ -165,23 +216,26 @@ footer {
 /* Media Queries */
 
 /* Tablet */
-@media (min-width: 600px) {
+@media (min-width: 650px) {
   .logo {
     font-size: var(--font-size-lg);
   }
 
-  nav ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-  }
-
-  nav ul li {
-    margin: 0 10px;
-  }
-
-  header .menu-toggle {
+  .navbar-extra {
     display: none;
+  }
+  .navbar-nav {
+    position: static;
+    height: auto;
+    width: auto;
+    background: none;
+    padding: 0;
+  }
+  .navbar-nav ul {
+    display: flex;
+  }
+  .navbar-nav ul li {
+    margin: 0 15px;
   }
 
   #food-container {
@@ -192,7 +246,7 @@ footer {
 
 /* Desktop */
 @media (min-width: 992px) {
-  nav ul li {
+  .navbar-extra ul li {
     margin-left: 20px;
   }
 

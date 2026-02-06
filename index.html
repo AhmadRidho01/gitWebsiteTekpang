@@ -9,27 +9,24 @@
 
   <body>
     <header>
-      <nav>
-        <div class="logo">Food<span>Science</span></div>
+      <div class="logo">Food<span>Science</span></div>
 
+      <!-- Input diletakkan di luar agar bisa mengontrol .menu melalui CSS -->
+      <input type="checkbox" id="menu-checkbox" class="menu-input" />
+
+      <label for="menu-checkbox" class="navbar-extra">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <nav class="navbar-nav">
         <ul>
-          <!-- <li>
-            <a href="#">HOME</a>
-          </li> -->
-          <li>
-            <a href="#">FOOD CATALOG</a>
-          </li>
-          <!-- <li>
-            <a href="#">JOURNAL</a>
-          </li> -->
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Food Catalog</a></li>
+          <li><a href="#">Contact</a></li>
         </ul>
-
-        <!-- <div class="menu-toggle">
-          <input type="checkbox" />
-          <span></span>
-          <span></span>
-          <span></span>
-        </div> -->
       </nav>
     </header>
 
